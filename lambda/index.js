@@ -5,29 +5,27 @@ const { sanitize } = sanitizer
 const { upsert } = dynamo
 
 exports.handler = async (event) => {
-    const { name, eha, code } = JSON.parse(event.body)
+    let { name, eha, code } = JSON.parse(event.body)
 
-    console.log(`##########
-galactus service start
-name: ${name}
-eha: ${eha}
-code: ${code}
-############`)
-    const sName = sanitize(name)
-    const sEha = sanitize(eha)
-    const sCode = sanitize(code)
+    if( code !== 'Galactus') {
+        console.log(`INVALID_CODE: ${JSON.stringify(event.body)}`)
+        return {
+            statusCode: 200,
+            body: JSON.stringify('Invalid code, pls try the right one!'),
+        }
+    }
 
-    console.log(`##########
-sname: ${sName}
-seha: ${sEha}
-scode: ${sCode}
-############`)
+    name = sanitize(name)
+    eha = sanitize(eha)
+    code = sanitize(code)
 
-    await upsert({eha, code, name})
+    console.log({name, eha, code})
+
+    await upsert({name, eha, code})
 
     const response = {
         statusCode: 200,
-        body: JSON.stringify('Hello from Lambda!'),
+        body: JSON.stringify('Galactus service is happy. Thank you for reaching out to it\'s API'),
     }
     return response
 }
