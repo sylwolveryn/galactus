@@ -39,7 +39,7 @@ function App() {
                            onChange={(event) => { handleNameUpdate(event.currentTarget.value) } }
                     ></input><br/>
 
-                    <label for='eha'>eha</label><br/>
+                    <label for='eha'>Neptum kód</label><br/>
                     <input type='text'
                            id='eha'
                            placeholder='asd.me'

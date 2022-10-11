@@ -7,7 +7,7 @@ const { upsert } = dynamo
 exports.handler = async (event) => {
     let { name, eha, code } = JSON.parse(event.body)
 
-    if( code !== 'Galactus') {
+    if( code !== 'CSS') {
         console.log(`INVALID_CODE: ${JSON.stringify(event.body)}`)
         return {
             statusCode: 200,
