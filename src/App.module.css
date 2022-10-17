@@ -27,3 +27,12 @@
 input {
   font-size: xx-large;
 }
+
+
+input[type="submit"] {
+  margin-top: 1em;
+}
+
+h2 {
+  margin: 0 0.5em;
+}
